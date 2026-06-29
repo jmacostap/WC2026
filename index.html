@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>World Cup 2026 Sticker Exchange</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>World Cup 2026 — Sticker Exchange</h1>
+    <p class="lead">Paste your missing and spare stickers below, then hit compare to see what we can swap.</p>
+
+    <section class="mine">
+      <div class="card">
+        <h2>I'm missing</h2>
+        <div id="my-missing" class="chips"></div>
+      </div>
+      <div class="card">
+        <h2>I have spare</h2>
+        <div id="my-repeats" class="chips"></div>
+      </div>
+    </section>
+
+    <section class="theirs">
+      <h2>Your stickers</h2>
+      <p class="hint">Codes look like <code>MAR13</code> (3 letters + number). Separate them with spaces, commas, or new lines.</p>
+      <div class="inputs">
+        <label>
+          You're missing
+          <textarea id="their-missing" rows="6" placeholder="ARG10, BRA09, FRA07 ..."></textarea>
+        </label>
+        <label>
+          You have spare
+          <textarea id="their-repeats" rows="6" placeholder="GER02, ESP21 ..."></textarea>
+        </label>
+      </div>
+      <button id="compare">Compare lists</button>
+      <p id="warn" class="warn" hidden></p>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <div class="card give">
+        <h2>I can give you <span class="count" id="i-give-count">0</span></h2>
+        <div id="i-give" class="chips"></div>
+      </div>
+      <div class="card get">
+        <h2>You can give me <span class="count" id="you-give-count">0</span></h2>
+        <div id="you-give" class="chips"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
