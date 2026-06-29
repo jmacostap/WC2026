@@ -1,4 +1,4 @@
-const CODE_RE = /^([A-Z]{3})(\d{1,2})$/;
+const CODE_RE = /^([A-Z]{2,3})(\d{1,2})$/;
 const PREFIX_RE = /^[A-Z]{2,4}$/;
 const NUM_RE = /^\d{1,2}$/;
 

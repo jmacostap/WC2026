@@ -13,7 +13,6 @@ AUT6 AUT9
 BIH12 BIH15 BIH18
 BRA12 BRA17
 CAN3 CAN19
-# CC is only 2 letters -- does not match the 3-letter rule yet:
 CC2 CC4 CC9 CC11 CC12 CC13 CC14
 CIV3
 COD2 COD4 COD17
