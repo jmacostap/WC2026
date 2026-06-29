@@ -1,23 +1,35 @@
 const CODE_RE = /^([A-Z]{3})(\d{1,2})$/;
+const PREFIX_RE = /^[A-Z]{2,4}$/;
+const NUM_RE = /^\d{1,2}$/;
 
-// Split raw text into tokens, dropping comments and blanks.
-function tokenize(text) {
-  return text
-    .split('\n')
-    .filter((line) => !line.trim().startsWith('#'))
-    .join(' ')
-    .split(/[\s,]+/)
-    .map((t) => t.trim().toUpperCase())
-    .filter(Boolean);
-}
-
+// Parse one list, accepting two interchangeable styles:
+//   full codes  ->  MAR13 ARG10 BRA9
+//   per-line    ->  ARG: 1 2 3 4   (a country prefix applies to the
+//                                   bare numbers that follow it on the line)
+// Quantities in parentheses are ignored: "17(2x)" reads as 17.
 // Returns { valid: Set<string>, invalid: string[] }.
 function parseList(text) {
   const valid = new Set();
   const invalid = [];
-  for (const tok of tokenize(text)) {
-    if (CODE_RE.test(tok)) valid.add(tok);
-    else invalid.push(tok);
+  for (const rawLine of text.split('\n')) {
+    const line = rawLine.trim();
+    if (!line || line.startsWith('#')) continue;
+    let prefix = null;
+    const cleaned = line.toUpperCase().replace(/\([^)]*\)/g, ' ');
+    for (const tok of cleaned.split(/[\s,:]+/).filter(Boolean)) {
+      if (CODE_RE.test(tok)) {
+        valid.add(tok);
+        prefix = tok.match(CODE_RE)[1];
+      } else if (PREFIX_RE.test(tok)) {
+        prefix = tok;
+      } else if (NUM_RE.test(tok)) {
+        const code = prefix ? prefix + tok : tok;
+        if (CODE_RE.test(code)) valid.add(code);
+        else invalid.push(code);
+      } else {
+        invalid.push(tok);
+      }
+    }
   }
   return { valid, invalid };
 }
