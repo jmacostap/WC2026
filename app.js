@@ -61,13 +61,13 @@ function renderChips(el, codes) {
   }
 }
 
-// My lists, parsed once at load.
-const mine = {
-  missing: parseList(MY_MISSING),
-  repeats: parseList(MY_REPEATS),
-};
+// Runs once data.js has loaded and the DOM is ready.
+function boot() {
+  const mine = {
+    missing: parseList(MY_MISSING),
+    repeats: parseList(MY_REPEATS),
+  };
 
-document.addEventListener('DOMContentLoaded', () => {
   renderChips(document.getElementById('my-missing'), sortCodes(mine.missing.valid));
   renderChips(document.getElementById('my-repeats'), sortCodes(mine.repeats.valid));
 
@@ -100,4 +100,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     results.hidden = false;
   });
-});
+}
+
+// Load my lists with a cache-buster so updates to data.js reach returning
+// visitors on their next reload, instead of waiting out the GitHub Pages
+// 10-minute cache. The query is skipped under file:// for local testing.
+function loadData() {
+  const bust = location.protocol.startsWith('http') ? '?t=' + Date.now() : '';
+  const s = document.createElement('script');
+  s.src = 'data.js' + bust;
+  s.onload = boot;
+  document.head.appendChild(s);
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadData);
+} else {
+  loadData();
+}
