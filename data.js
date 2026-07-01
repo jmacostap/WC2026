@@ -1,6 +1,7 @@
 // ============================================================
 //  EDIT THIS FILE to update your lists. Nothing else to change.
-//  Sticker codes: 3 letters + 1-2 digit number, e.g. MAR13
+//  Sticker codes: 3 letters + 1-2 digit number, e.g. MAR13 ARG5
+//  or one country per line e.g. ARG 1 3 12 15
 //  Separate codes with spaces, commas, or new lines. Case does
 //  not matter. Lines starting with # are ignored (comments).
 // ============================================================
@@ -13,12 +14,12 @@ AUT6 AUT9
 BIH12 BIH15 BIH18
 BRA12 BRA17
 CAN3 CAN19
-CC2 CC4 CC9 CC11 CC12 CC13 CC14
+CC2 CC4 CC12 CC13 CC14
 CIV3
 COD2 COD4 COD17
 COL7 COL8 COL13 COL15 COL19
 CPV1 CPV2 CPV4 CPV17
-CRO5 CRO12 CRO16 CRO17
+CRO5 CRO16 CRO17
 CUW2 CUW5 CUW9
 CZE3 CZE7 CZE20
 EGY20
@@ -26,7 +27,7 @@ ENG1 ENG8
 ESP18 ESP19
 FWC7 FWC18
 GHA4 GHA7 GHA12 GHA15
-HAI4 HAI7 HAI13
+HAI7 HAI13
 IRN11 IRN16
 IRQ2 IRQ9
 JOR2 JOR11 JOR15
@@ -43,9 +44,9 @@ RSA3 RSA4 RSA16
 SCO20
 SUI5 SUI15
 SWE1 SWE2 SWE16 SWE17 SWE20
-TUR13 TUR15
+TUR13
 URU16
-USA1 USA4 USA8 USA16
+USA1 USA8 USA16
 UZB10 UZB13 UZB18
 `;
 
@@ -55,8 +56,8 @@ ARG 1 4 7 8 9 12 14 15 17
 AUS 2 4 6 8 9 12 13 15 16 18 20
 AUT 1 3 14 15 16 18 19 
 BEL 1 8 14 15 16 17 18
-BIH 2 3 4 5 7 8 16 17 20 
-BRA 2 3 4 8 10 13 15 20
+BIH 2 3 4 7 8 16 20 
+BRA 2 3 4 8 10 13 20
 CAN 1 5 6 7 9 12 13 17 18 20 
 CIV 1 2 6 8 9 12 18 20
 COD 3 5 7 9 11 14 16 18 COL 1 4 5 10 16 18 
