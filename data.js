@@ -6,6 +6,11 @@
 //  not matter. Lines starting with # are ignored (comments).
 // ============================================================
 
+// Bump this on every edit so you can confirm on the site (top of the page)
+// which version your phone is actually showing. Convention: today's date
+// plus how many commits you've made today.
+const DATA_VERSION = "2026-07-04.8";
+
 const MY_MISSING = `
 ARG20
 AUS19

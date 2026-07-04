@@ -5,16 +5,18 @@ const NUM_RE = /^\d{1,2}$/;
 // Parse one list, accepting two interchangeable styles:
 //   full codes  ->  MAR13 ARG10 BRA9
 //   per-line    ->  ARG: 1 2 3 4   (a country prefix applies to the
-//                                   bare numbers that follow it on the line)
+//                                   bare numbers that follow it)
+// A country prefix carries across lines until the next country code appears,
+// so one team may be split over several lines (easier to type on a phone).
 // Quantities in parentheses are ignored: "17(2x)" reads as 17.
 // Returns { valid: Set<string>, invalid: string[] }.
 function parseList(text) {
   const valid = new Set();
   const invalid = [];
+  let prefix = null;
   for (const rawLine of text.split('\n')) {
     const line = rawLine.trim();
     if (!line || line.startsWith('#')) continue;
-    let prefix = null;
     const cleaned = line.toUpperCase().replace(/\([^)]*\)/g, ' ');
     for (const tok of cleaned.split(/[\s,:]+/).filter(Boolean)) {
       if (CODE_RE.test(tok)) {
@@ -70,6 +72,8 @@ function boot() {
 
   renderChips(document.getElementById('my-missing'), sortCodes(mine.missing.valid));
   renderChips(document.getElementById('my-repeats'), sortCodes(mine.repeats.valid));
+  document.getElementById('version').textContent =
+    'Lists version: ' + (typeof DATA_VERSION === 'undefined' ? '?' : DATA_VERSION);
 
   const theirMissingEl = document.getElementById('their-missing');
   const theirRepeatsEl = document.getElementById('their-repeats');

@@ -93,6 +93,12 @@ button:hover { filter: brightness(1.08); }
 .give h2 { color: var(--give); }
 .get h2 { color: var(--get); }
 
+.version {
+  margin-top: -.25rem;
+  color: var(--muted);
+  font-size: .8rem;
+}
+
 @media (max-width: 620px) {
   .mine, .results, .inputs { grid-template-columns: 1fr; }
 }
