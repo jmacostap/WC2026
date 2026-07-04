@@ -49,17 +49,27 @@ function intersect(setA, setB) {
   return sortCodes([...setA].filter((c) => setB.has(c)));
 }
 
-function renderChips(el, codes) {
+// Compact display: one row per country, "ARG 1 2 3", to save space on phones.
+function renderCodes(el, codes) {
   el.innerHTML = '';
   if (!codes.length) {
     el.innerHTML = '<span class="muted">none</span>';
     return;
   }
-  for (const c of codes) {
-    const span = document.createElement('span');
-    span.className = 'chip';
-    span.textContent = c;
-    el.appendChild(span);
+  const groups = new Map();
+  for (const c of sortCodes(codes)) {
+    const [, team, num] = c.match(CODE_RE);
+    if (!groups.has(team)) groups.set(team, []);
+    groups.get(team).push(num);
+  }
+  for (const [team, nums] of groups) {
+    const row = document.createElement('div');
+    row.className = 'row';
+    const name = document.createElement('span');
+    name.className = 'team';
+    name.textContent = team;
+    row.append(name, ' ' + nums.join(' '));
+    el.appendChild(row);
   }
 }
 
@@ -70,8 +80,8 @@ function boot() {
     repeats: parseList(MY_REPEATS),
   };
 
-  renderChips(document.getElementById('my-missing'), sortCodes(mine.missing.valid));
-  renderChips(document.getElementById('my-repeats'), sortCodes(mine.repeats.valid));
+  renderCodes(document.getElementById('my-missing'), sortCodes(mine.missing.valid));
+  renderCodes(document.getElementById('my-repeats'), sortCodes(mine.repeats.valid));
   document.getElementById('version').textContent =
     'Lists version: ' + (typeof DATA_VERSION === 'undefined' ? '?' : DATA_VERSION);
 
@@ -88,8 +98,8 @@ function boot() {
     // You give me: your repeats that I am missing.
     const youGive = intersect(theirRepeats.valid, mine.missing.valid);
 
-    renderChips(document.getElementById('i-give'), iGive);
-    renderChips(document.getElementById('you-give'), youGive);
+    renderCodes(document.getElementById('i-give'), iGive);
+    renderCodes(document.getElementById('you-give'), youGive);
     document.getElementById('i-give-count').textContent = iGive.length;
     document.getElementById('you-give-count').textContent = youGive.length;
 
