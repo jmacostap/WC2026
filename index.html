@@ -4,7 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>World Cup 2026 Sticker Exchange</title>
-  <link rel="stylesheet" href="style.css" />
+  <script>
+    // Load style.css with a cache-buster so a fresh index.html (e.g. via ?x=1)
+    // also pulls the latest CSS instead of the 10-min cached copy. document.write
+    // during parse loads it synchronously, avoiding an unstyled flash.
+    (function () {
+      var q = location.protocol.indexOf('http') === 0 ? '?t=' + Date.now() : '';
+      document.write('<link rel="stylesheet" href="style.css' + q + '">');
+    })();
+  </script>
 </head>
 <body>
   <main>
@@ -52,8 +60,16 @@
     </section>
   </main>
 
-  <!-- data.js is loaded by app.js with a cache-buster so list updates
-       reach returning visitors on reload instead of after the 10-min cache. -->
-  <script src="app.js"></script>
+  <!-- app.js is loaded with a cache-buster so a fresh index.html pulls the
+       latest code; app.js in turn loads data.js the same way. This makes one
+       ?x= (or the 10-min index cache expiring) refresh the whole site. -->
+  <script>
+    (function () {
+      var q = location.protocol.indexOf('http') === 0 ? '?t=' + Date.now() : '';
+      var s = document.createElement('script');
+      s.src = 'app.js' + q;
+      document.head.appendChild(s);
+    })();
+  </script>
 </body>
 </html>
