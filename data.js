@@ -9,7 +9,7 @@
 // Bump this on every edit so you can confirm on the site (top of the page)
 // which version your phone is actually showing. Convention: today's date
 // plus how many commits you've made today.
-const DATA_VERSION = "2026-07-04.11";
+const DATA_VERSION = "2026-07-06.2";
 
 const MY_MISSING = `
 ARG20
@@ -22,10 +22,8 @@ COL13
 CPV1
 CRO5 CRO16
 CUW2
-ENG8
-GHA4 GHA7
+GHA4
 IRQ2
-JPN4 
 MEX19
 NOR17
 PAN13
@@ -34,7 +32,6 @@ SUI5
 SWE16 SWE17
 URU16
 USA16
-UZB13
 `;
 
 const MY_REPEATS = `
