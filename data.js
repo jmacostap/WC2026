@@ -19,12 +19,13 @@
 // plus how many commits you've made
 //today.
 
-const DATA_VERSION = "2026-07-06.9";
+const DATA_VERSION = "2026-07-06.10";
 
 const MY_MISSING = `
 BIH18
 CC2 CC4 CC12
 NOR17
+PAN13
 USA16
 `;
 
