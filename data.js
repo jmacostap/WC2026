@@ -1,15 +1,25 @@
-// ============================================================
-//  EDIT THIS FILE to update your lists. Nothing else to change.
-//  Sticker codes: 3 letters + 1-2 digit number, e.g. MAR13 ARG5
-//  or one country per line e.g. ARG 1 3 12 15
-//  Separate codes with spaces, commas, or new lines. Case does
-//  not matter. Lines starting with # are ignored (comments).
-// ============================================================
 
-// Bump this on every edit so you can confirm on the site (top of the page)
-// which version your phone is actually showing. Convention: today's date
-// plus how many commits you've made today.
-const DATA_VERSION = "2026-07-06.2";
+//  EDIT THIS FILE to update your
+// lists. Nothing else to change.
+//  Sticker codes: 3 letters + 1-2
+// digit number, e.g. MAR13 ARG5
+//  or one country per line e.g. 
+// ARG 1 3 12 15
+//  Separate codes with spaces, commas, 
+// or new lines. Case does
+//  not matter. Lines starting with 
+// # are ignored 
+// =============================
+
+// Bump this on every edit so you 
+// can confirm on the site (top of
+// the page)
+// which version your phone is actually
+// showing. Convention: today's date
+// plus how many commits you've made
+//today.
+
+const DATA_VERSION = "2026-07-06.3";
 
 const MY_MISSING = `
 ARG20
@@ -23,7 +33,6 @@ CPV1
 CRO5 CRO16
 CUW2
 GHA4
-IRQ2
 MEX19
 NOR17
 PAN13
