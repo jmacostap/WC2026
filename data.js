@@ -19,14 +19,12 @@
 // plus how many commits you've made
 //today.
 
-const DATA_VERSION = "2026-07-06.8";
+const DATA_VERSION = "2026-07-06.9";
 
 const MY_MISSING = `
 BIH18
 CC2 CC4 CC12
-CRO16
 NOR17
-SWE17
 USA16
 `;
 
@@ -51,7 +49,7 @@ EGY 1 2 3 8 18 19
 ENG 4 10 12 13 14 15 19 20 
 ESP 4 7 8 10 13 17 20 
 FRA 3 5 6 9 16 17 19 
-FWC 1 11 13 16 
+FWC 11 13 16 
 GER 2 3 6 7 9 11 13 14 15 18 20 
 GHA 1 2 3 9 10 11 12 14 19 
 HAI 1 2 5 11 12 14 16 20 
